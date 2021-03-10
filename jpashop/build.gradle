@@ -47,6 +47,9 @@ dependencies {
     // h2
     runtimeOnly 'com.h2database:h2'
 
+    // maria
+    compile "org.mariadb.jdbc:mariadb-java-client"
+
     // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
