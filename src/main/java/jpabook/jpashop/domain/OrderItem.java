@@ -34,4 +34,10 @@ public class OrderItem {
 
     private int count;
 
+    // === 연관관계 편의 메소드 === //
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
 }

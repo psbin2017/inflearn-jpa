@@ -54,4 +54,22 @@ public class Order {
     @Column(name = "order_status")
     private OrderStatus status;
 
+    // === 연관관계 편의 메소드 === //
+
+    public void setMember(Member member) {
+        this.member = member;
+        member.getOrders().add(this);
+    }
+
+    public void addOrderItem(OrderItem orderItem) {
+        if ( ! this.orderItems.contains(orderItem) ) {
+            this.orderItems.add(orderItem);
+        }
+        orderItem.setOrder(this);
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+        delivery.setOrder(this);
+    }
 }

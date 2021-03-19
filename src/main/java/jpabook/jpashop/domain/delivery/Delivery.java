@@ -32,4 +32,9 @@ public class Delivery {
     @Column(name = "delivery_status")
     private DeliveryStatus status;
 
+    // === 연관관계 편의 메소드 === //
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 }
