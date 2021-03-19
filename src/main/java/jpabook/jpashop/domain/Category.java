@@ -32,7 +32,7 @@ public class Category {
     /*
      * self 로 양방향 매핑
      */
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Category parent;
 

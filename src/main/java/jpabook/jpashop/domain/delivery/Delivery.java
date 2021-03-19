@@ -22,7 +22,7 @@ public class Delivery {
      * 양방향 매핑
      * mappedBy: 반대쪽 매핑의 필드 명을 값으로 준다.
      */
-    @OneToOne(mappedBy = "delivery")
+    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
     private Order order;
 
     @Embedded

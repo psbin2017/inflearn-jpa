@@ -25,7 +25,7 @@ public class Order {
     private Long id;
 
     // 주문한 회원 (FK)
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
@@ -34,7 +34,7 @@ public class Order {
     private List<OrderItem> orderItems = new ArrayList<>();
 
     // 주문의 배송 (FK)
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
