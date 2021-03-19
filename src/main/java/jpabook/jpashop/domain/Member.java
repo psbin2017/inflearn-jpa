@@ -28,6 +28,10 @@ public class Member {
     /*
      * 양방향 매핑
      * mappedBy: 반대쪽 매핑의 필드 명을 값으로 준다.
+     *
+     * `= new ArrayList<>();`
+     * 하이버네이트가 엔티티 내부 컬렉션을 내장 컬렉션으로 변경하는데 잘못된 생성시 문제가 발생한다.
+     * 그래서 필드 레벨로 생성하는 것이 가장 안전하고, 코드도 간결하다.
      */
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
