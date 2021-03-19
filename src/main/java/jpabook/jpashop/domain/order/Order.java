@@ -30,11 +30,20 @@ public class Order {
     private Member member;
 
     // 주문의 주문 상품
-    @OneToMany(mappedBy = "order")
+    /*
+     * `CascadeType.ALL`
+     * 전파 조건, 주문에 대한 `em.persist()` 시 같이 주문 상품도 반영된다.
+     *
+     * ex)
+     * em.persist(orderItem1); em.persist(orderItem2); em.persist(orderItem3); em.persist(order1);
+     * 인 코드를 `CascadeType.ALL` 설정시
+     * em.persist(order1);
+     */
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     // 주문의 배송 (FK)
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
