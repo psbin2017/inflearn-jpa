@@ -1,10 +1,12 @@
 package jpabook.jpashop.member;
 
+import jpabook.jpashop.domain.Member;
+
 public class MemberBuilder {
 
-    public static Member name(String username) {
+    public static Member name(String name) {
         Member member = Member.builder()
-                                .username(username)
+                                .name(name)
                                 .build();
         return member;
     }
