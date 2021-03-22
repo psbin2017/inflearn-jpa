@@ -1,6 +1,7 @@
 package jpabook.jpashop.member;
 
 import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.repository.MemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,14 +22,12 @@ public class MemberRepositoryTest {
     private MemberRepository memberRepository;
 
     /**
-     * @Transactional
+     * `@Transactional`
      * 1. 테스트 코드에 있으면 실행된 작업을 롤백함
      *      ... 롤백을 하지않고 싶다면 @Rollback(false)
      *
      * 2. 리포지토리와 메소드에 해당 어노테이션이 없으면 엔티티 매니저가 트랜잭션 처리를 할 수 없어 `InvalidDataAccessApiUsageException` 가 발생함.
      *      ... No EntityManager with actual transaction available for current thread
-     *
-     * @throws Exception
      */
     @Test
     @Transactional
@@ -40,7 +39,7 @@ public class MemberRepositoryTest {
         // when
         Long saveId = memberRepository.save(member);
         // select query 실행 안함 (영속성 컨텍스트 1차 캐시에 이미 가지고 있음)
-        Member findMember = memberRepository.find(saveId);
+        Member findMember = memberRepository.findOne(saveId);
 
         // then
         Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
