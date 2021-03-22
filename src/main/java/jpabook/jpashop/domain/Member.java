@@ -1,8 +1,10 @@
 package jpabook.jpashop.domain;
 
 import jpabook.jpashop.domain.order.Order;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import java.util.List;
 /**
  * 하나의 회원은 여러 개의 주문을 가진다.
  */
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
 public class Member {

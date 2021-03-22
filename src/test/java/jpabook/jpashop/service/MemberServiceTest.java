@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,10 +26,10 @@ public class MemberServiceTest {
      * 보고 싶다면 엔티티 매니저를 직접 플러시 하거나 `@Rollback(value = false)` 를 선언하여 롤백을 취소한다.
      */
     @Test
-    @Rollback(value = false)
+    // @Rollback(value = false)
     public void join_success() throws Exception {
         // given
-        Member member = MemberBuilder.name("홍길동");
+        Member member = MemberBuilder.name("어피치");
 
         // when
         Long saveId = memberService.join(member);
