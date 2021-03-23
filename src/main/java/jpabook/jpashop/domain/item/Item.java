@@ -2,7 +2,10 @@ package jpabook.jpashop.domain.item;
 
 import jpabook.jpashop.domain.Category;
 import jpabook.jpashop.global.exception.NotEnoughStockException;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,7 +20,9 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@Setter(AccessLevel.PRIVATE)
 public abstract class Item {
 
     @Id
@@ -36,6 +41,13 @@ public abstract class Item {
      */
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
+
+    public Item(String name, long price, int stockQuantity, List<Category> categories) {
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.categories = categories;
+    }
 
     //== 비즈니스 로직 ==//
     // 엔티티에 관한 비즈니스 로직을 엔티티가 직접 가지고 있음
@@ -59,4 +71,5 @@ public abstract class Item {
         }
         this.stockQuantity = restStock;
     }
+
 }
