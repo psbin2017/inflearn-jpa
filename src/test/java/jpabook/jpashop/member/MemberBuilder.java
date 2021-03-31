@@ -11,17 +11,11 @@ public class MemberBuilder {
     private static final String ZIPCODE = "1";
 
     public static Member name(String name) {
-        return Member.builder()
-                .name(name)
-                .address(address())
-                .build();
+        return Member.createMember(name, address());
     }
 
     public static Member address(Address address) {
-        return Member.builder()
-                .name(NAME)
-                .address(address)
-                .build();
+        return Member.createMember(NAME, address());
     }
 
     private static Address address() {

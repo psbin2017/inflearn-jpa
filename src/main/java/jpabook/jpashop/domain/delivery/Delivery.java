@@ -2,7 +2,9 @@ package jpabook.jpashop.domain.delivery;
 
 import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.order.Order;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -11,6 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 @Getter
+@Setter(AccessLevel.PRIVATE)
 public class Delivery {
 
     @Id
@@ -36,5 +39,13 @@ public class Delivery {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    // === 생성 메소드 === //
+
+    public static Delivery createDelivery(Address address) {
+        Delivery delivery = new Delivery();
+        delivery.setAddress(address);
+        return delivery;
     }
 }

@@ -1,10 +1,7 @@
 package jpabook.jpashop.domain;
 
 import jpabook.jpashop.domain.order.Order;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
+@Setter(AccessLevel.PRIVATE)
 public class Member {
 
     @Id
@@ -39,11 +37,11 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
-    @Builder
-    public Member(String name, Address address, List<Order> orders) {
-        this.name = name;
-        this.address = address;
-        this.orders = orders;
+    public static Member createMember(String name, Address address) {
+        Member member = new Member();
+        member.setName(name);
+        member.setAddress(address);
+        return member;
     }
 
 }
