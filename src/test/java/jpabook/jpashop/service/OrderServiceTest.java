@@ -55,7 +55,7 @@ public class OrderServiceTest {
         
         // when
         Long orderId = orderService.order(member.getId(), album.getId(), 10 );
-        orderService.cancel(orderId);
+        orderService.cancelOrder(orderId);
 
         Order order = orderService.findOne(orderId);
         
