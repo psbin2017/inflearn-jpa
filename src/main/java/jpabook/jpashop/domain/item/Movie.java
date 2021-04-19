@@ -22,8 +22,8 @@ public class Movie extends Item {
     private String actor;
 
     @Builder
-    public Movie(String name, long price, int stockQuantity, List<Category> categories, String director, String actor) {
-        super(name, price, stockQuantity, categories);
+    public Movie(Long id, String name, long price, int stockQuantity, List<Category> categories, String director, String actor) {
+        super(id, name, price, stockQuantity, categories);
         this.director = director;
         this.actor = actor;
     }

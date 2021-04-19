@@ -42,7 +42,8 @@ public abstract class Item {
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
 
-    public Item(String name, long price, int stockQuantity, List<Category> categories) {
+    protected Item(Long id, String name, long price, int stockQuantity, List<Category> categories) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.stockQuantity = stockQuantity;

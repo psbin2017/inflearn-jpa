@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * `@DiscriminatorValue` 구분값
  */
+@ToString
 @Entity
 @DiscriminatorValue(value = "book")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -22,8 +23,8 @@ public class Book extends Item {
     private String isbn;
 
     @Builder
-    public Book(String name, long price, int stockQuantity, List<Category> categories, String author, String isbn) {
-        super(name, price, stockQuantity, categories);
+    public Book(Long id, String name, long price, int stockQuantity, List<Category> categories, String author, String isbn) {
+        super(id, name, price, stockQuantity, categories);
         this.author = author;
         this.isbn = isbn;
     }
